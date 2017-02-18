@@ -1,0 +1,9 @@
+{
+  "name": "R.swift",
+  "description": "Get strong typed, autocompleted resources like images, fonts and segues in Swift projects",
+  "dependency": "You should install R.swift through CocoaPods! Add pod 'R.swift' to your Podfile and run pod install.",
+  "author": "Tibor Bödecs <mail.tib@gmail.com>",
+  "params": {
+    "target": "Target destination of the generated R.generated.swift file."
+  }
+}

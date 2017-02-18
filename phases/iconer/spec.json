@@ -1,0 +1,11 @@
+{
+  "name": "Iconer",
+  "description": "App icon generator for Apple platforms.",
+  "dependency": "brew tap tib/tap; brew install iconer",
+  "author": "Tibor Bödecs <mail.tib@gmail.com>",
+  "params": {
+    "source": "The source of the AppIcon.png file.",
+    "target": "Destination path of the assets directory.",
+    "platform": "Available platforms: ios|macos|watchos"
+  }
+}

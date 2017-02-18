@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+require 'xphase'
+require 'optparse'
+
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+
+    opts.banner  = "Usage:\n\n"
+    opts.banner += "\t$ xphase command [options]\n\n"
+    opts.banner += "Commands:\n\n"
+    opts.banner += "\t+ init - Creates a new template xphase.json file.\n"
+    opts.banner += "\t+ install - Install the phases defined in the xphase.json file.\n"
+    opts.banner += "\t+ uninstall - Uninstall all the shell scripts from the project.\n"
+    opts.banner += "\n"
+    opts.banner += "Options:\n"
+    opts.banner += "\n"
+
+    # options[:verbose] = false
+    # opts.on( '-v', '--verbose', 'Output more information' ) do
+    #     options[:verbose] = true
+    # end
+
+    # options[:logfile] = nil
+    # opts.on( '-l', '--logfile FILE', 'Write log to FILE' ) do |file|
+    #     options[:logfile] = file
+    # end
+
+    opts.on( '-h', '--help', 'Display this screen' ) do
+        puts opts
+        exit
+    end
+end
+
+
+begin
+    optparse.parse!
+
+    mandatory = []
+    missing = mandatory.select do |param|
+        options[param].nil?
+    end
+    unless missing.empty?
+        raise OptionParser::MissingArgument.new(missing.join(', '))
+    end
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument
+    puts $!.to_s
+    puts optparse
+    exit
+end
+
+command = ARGV.shift
+unless command
+    puts "Error: command not found!\n\n"
+    puts optparse
+    exit
+end
+
+case command
+when 'init'
+  Xphase.new.init
+  exit
+when 'install'
+  Xphase.new.install
+  exit
+when 'uninstall'
+  Xphase.new.uninstall
+  exit
+end
+
+puts "Error: invalid command!\n\n"
+puts optparse
+exit
+
+
+

@@ -1,0 +1,7 @@
+{
+  "name": "SwiftLint",
+  "description": "A tool to enforce Swift style and conventions. https://realm.io",
+  "dependency": "brew install swiftlint",
+  "author": "Tibor Bödecs <mail.tib@gmail.com>",
+  "params": {}
+}

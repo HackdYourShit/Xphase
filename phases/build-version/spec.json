@@ -1,0 +1,9 @@
+{
+  "name": "Build version",
+  "description": "Auto-increment build numbers",
+  "dependency": "-",
+  "author": "Tibor Bödecs <mail.tib@gmail.com>",
+  "params": {
+    "counter": "Your own counter logic like: 'git rev-list --all --count'."
+  }
+}
