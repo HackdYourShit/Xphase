@@ -1,4 +1,4 @@
-#xphase
+#Xphase
 Build phase manager for Xcode
 
 ---
