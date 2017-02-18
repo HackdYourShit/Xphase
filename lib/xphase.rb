@@ -104,7 +104,7 @@ class Xphase
         current_source_files = "#{current_work_dir}/*.xcodeproj"
 
         if Dir[current_source_files].count == 0
-            error " ▸ No Xcode file found in the project directory."
+            puts " ▸ No Xcode file found in the project directory."
             exit -1
         end
 
@@ -113,7 +113,7 @@ class Xphase
         begin
             project = Xcodeproj::Project.open project_path
         rescue
-            error " ▸ Can't open Xcode project file."
+            puts " ▸ Can't open Xcode project file."
             exit -1
         end
 
