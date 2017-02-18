@@ -81,7 +81,7 @@ To remove all shell scripts from an Xcode project run **`xphase uninstall`**.
 
 - target_name: The Xcode target name to install phases. Use the `*` character as name for shared phases.
 - phases: The array of Xcode build phase specs that you would like to install.
-- spec: The unique identifier of the xphase spec. Check the [phases](https://github.com/CoreKit/xphase/master/phases/) directory for available specs.
+- spec: The unique identifier of the xphase spec. Check the [phases](https://github.com/CoreKit/xphase/tree/master/phases) directory for available specs.
 - name: You can define your own name for each build phase. (By default spec id will be used as name)
 - params: Various parameters for the build scripts. Check the spec definition for available options
 - flags: You can use the special `flags` param to append extra info to the end of the phase scripts.
