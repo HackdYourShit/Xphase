@@ -53,7 +53,6 @@ class Xphase::Spec
             if ENV["XPHASE_LOCAL"].nil?
                 contents  = open(self.specLocation).read
                 @template = open(self.scriptLocation).read
-
             else
                 contents  = File.open(self.specLocation, "rb").read
                 @template = File.open(self.scriptLocation, "rb").read
@@ -62,8 +61,6 @@ class Xphase::Spec
             @id = nil
             return
         end
-
-
 
         json         = JSON.parse(contents)
 

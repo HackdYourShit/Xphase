@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'xphase'
 require 'optparse'
 
 
@@ -18,15 +17,12 @@ optparse = OptionParser.new do |opts|
     opts.banner += "Options:\n"
     opts.banner += "\n"
 
-    # options[:verbose] = false
-    # opts.on( '-v', '--verbose', 'Output more information' ) do
-    #     options[:verbose] = true
-    # end
 
-    # options[:logfile] = nil
-    # opts.on( '-l', '--logfile FILE', 'Write log to FILE' ) do |file|
-    #     options[:logfile] = file
-    # end
+    opts.on( '-v', '--version', 'Output version information' ) do
+        require 'xphase/gem_version'
+        puts "Xphase version v" + Xphase::VERSION + " by Tibor Bödecs<mail.tib@gmail.com>"
+        exit
+    end
 
     opts.on( '-h', '--help', 'Display this screen' ) do
         puts opts
@@ -58,15 +54,19 @@ unless command
     exit
 end
 
+require 'xphase'
+
+xphase = Xphase.new
+
 case command
 when 'init'
-  Xphase.new.init
+  xphase.init
   exit
 when 'install'
-  Xphase.new.install
+  xphase.install
   exit
 when 'uninstall'
-  Xphase.new.uninstall
+  xphase.uninstall
   exit
 end
 

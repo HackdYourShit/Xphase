@@ -32,12 +32,12 @@ class Xphase
     end
 
     def init
-        puts "🔨 Xphase started:"
+        puts "Xphase started:"
 
-        puts "\t▸ Creating xphase.json file..."
+        puts " ▸ Creating xphase.json file..."
 
         current_work_dir = Dir.pwd
-        current_file     = "#{current_work_dir}/#{XPHASE_FILE}p"
+        current_file     = "#{current_work_dir}/#{XPHASE_FILE}"
 
         project = self.loadProject
 
@@ -50,35 +50,33 @@ class Xphase
         end
 
         File.open(current_file, 'w').write(phasefile.to_json)
-        puts "🔨 Xphase finished running."
+        puts "Xphase finished running."
     end
 
     def uninstall
-        puts "🔨 Xphase started:"
+        puts "Xphase started:"
         project = self.loadProject
         project.targets.each do |target|
-            puts "\t▸ Removing phases for target: '" + target.name + "'"
+            puts " ▸ Removing phases for target: '" + target.name + "'"
             target.shell_script_build_phases.each do |value|
                 target.build_phases.delete(value)
             end
         end
         project.save
 
-        puts "🔨 Xphase finished running."
+        puts "Xphase finished running."
     end
 
 
     def install
 
-
-
         project = self.loadProject
         json    = self.loadPhases
 
-        puts "🔨 Xphase started:"
+        puts "Xphase started:"
 
         project.targets.each do |target|
-            puts "\t▸ Setting up phases for target: '" + target.name + "'"
+            puts " ▸ Setting up phases for target: '" + target.name + "'"
 
             if !json["*"].nil? && !json["*"]["phases"].nil?
                 installPhasesForTarget(json["*"]["phases"], target)
@@ -89,7 +87,7 @@ class Xphase
             end
         end
         project.save
-        puts "🔨 Xphase finished running."
+        puts "Xphase finished running."
 
     end
 
@@ -106,7 +104,7 @@ class Xphase
         current_source_files = "#{current_work_dir}/*.xcodeproj"
 
         if Dir[current_source_files].count == 0
-            error "\t▸ No Xcode file found in the project directory."
+            error " ▸ No Xcode file found in the project directory."
             exit -1
         end
 
@@ -115,7 +113,7 @@ class Xphase
         begin
             project = Xcodeproj::Project.open project_path
         rescue
-            error "\t▸ Can't open Xcode project file."
+            error " ▸ Can't open Xcode project file."
             exit -1
         end
 
@@ -129,7 +127,7 @@ class Xphase
             spec = Spec.new(phase["spec"])
 
             if spec.nil?
-                puts "\t\t• Could not find phase with identifier: '" + phase["spec"] + "'"
+                puts "  • Could not find phase with identifier: '" + phase["spec"] + "'"
                 next
             end
 
@@ -139,7 +137,7 @@ class Xphase
             end
             script_value = spec.script(phase["params"])
 
-            puts "\t\t• Setting up '" + spec.id + "' with the name: '" + script_name + "'"
+            puts "  • Setting up '" + spec.id + "' with the name: '" + script_name + "'"
 
             script = nil
             target.shell_script_build_phases.each do |value|

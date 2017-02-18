@@ -1,8 +1,10 @@
+require File.expand_path('../lib/xphase/gem_version', __FILE__)
+
+
 Gem::Specification.new do |s|
     s.name               = 'xphase'
-    s.version            = '0.0.1'
+    s.version            = Xphase::VERSION
 
-    s.default_executable = "xphase"
     s.date               = '2017-02-12'
     s.summary            = "Build phase manager for Xcode"
     s.description        = "It's like a package manager for your Xcode build phases."
@@ -12,8 +14,9 @@ Gem::Specification.new do |s|
     s.authors            = ["Tibor Bödecs"]
     s.email              = 'mail.tib@gmail.com'
 
-    s.files              = ["bin/xphase", "lib/xphase.rb", "lib/xphase/spec.rb"]
-    s.require_paths      = ["lib"]
+    s.files              = Dir['lib/**/*.rb']
+    s.executables        = %w( xphase )
+    s.require_paths      = %w( lib )
 
     s.add_runtime_dependency 'xcodeproj',  '~> 1.4'
 
