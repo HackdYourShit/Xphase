@@ -1,4 +1,5 @@
-#Xphase
+# Xphase
+
 Build phase manager for Xcode
 
 ---
@@ -6,7 +7,7 @@ Build phase manager for Xcode
 > It's like a package manager for your Xcode build phases.
 
 
-###Installation
+### Installation
 
 ```bash
 sudo gem install xphase
